@@ -512,32 +512,72 @@ elements:
 
   # ===========================================================================
   # 7. OUTSIDE WEATHER IN TOP-RIGHT SKY CORNER (weather.home - 4x3 Tiles)
+  #    Splits Day (above_horizon) vs Night (below_horizon) so "partlycloudy"
+  #    shows Sun+Cloud during the day and Crescent Moon+Cloud at night!
   # ===========================================================================
-  - type: image
-    entity: weather.home
-    title: "Outside Weather"
-    image: /local/pokemon_floorplan/weather_partlycloudy.png
-    state_image:
-      "sunny": /local/pokemon_floorplan/weather_sunny.png
-      "clear-night": /local/pokemon_floorplan/weather_clear_night.png
-      "partlycloudy": /local/pokemon_floorplan/weather_partlycloudy.png
-      "cloudy": /local/pokemon_floorplan/weather_cloudy.png
-      "rainy": /local/pokemon_floorplan/weather_rainy.png
-      "pouring": /local/pokemon_floorplan/weather_lightning.png
-      "lightning": /local/pokemon_floorplan/weather_lightning.png
-      "lightning-rainy": /local/pokemon_floorplan/weather_lightning.png
-      "fog": /local/pokemon_floorplan/weather_fog.png
-      "windy": /local/pokemon_floorplan/weather_windy.png
-      "windy-variant": /local/pokemon_floorplan/weather_windy.png
-      "exceptional": /local/pokemon_floorplan/weather_windy.png
-      "unavailable": /local/pokemon_floorplan/transparent.png
-    tap_action:
-      action: more-info
-    style:
-      top: 8%
-      left: 83%
-      width: 18.2%
-      image-rendering: pixelated
+  # 7A. Daytime Weather (sun.sun == above_horizon)
+  - type: conditional
+    conditions:
+      - entity: sun.sun
+        state: "above_horizon"
+    elements:
+      - type: image
+        entity: weather.home
+        title: "Outside Weather (Day)"
+        image: /local/pokemon_floorplan/weather_partlycloudy.png
+        state_image:
+          "sunny": /local/pokemon_floorplan/weather_sunny.png
+          "clear-night": /local/pokemon_floorplan/weather_clear_night.png
+          "partlycloudy": /local/pokemon_floorplan/weather_partlycloudy.png
+          "cloudy": /local/pokemon_floorplan/weather_cloudy.png
+          "rainy": /local/pokemon_floorplan/weather_rainy.png
+          "pouring": /local/pokemon_floorplan/weather_lightning.png
+          "lightning": /local/pokemon_floorplan/weather_lightning.png
+          "lightning-rainy": /local/pokemon_floorplan/weather_lightning.png
+          "fog": /local/pokemon_floorplan/weather_fog.png
+          "windy": /local/pokemon_floorplan/weather_windy.png
+          "windy-variant": /local/pokemon_floorplan/weather_windy.png
+          "exceptional": /local/pokemon_floorplan/weather_windy.png
+          "unavailable": /local/pokemon_floorplan/transparent.png
+        tap_action:
+          action: more-info
+        style:
+          top: 8%
+          left: 83%
+          width: 18.2%
+          image-rendering: pixelated
+
+  # 7B. Nighttime Weather (sun.sun == below_horizon)
+  - type: conditional
+    conditions:
+      - entity: sun.sun
+        state: "below_horizon"
+    elements:
+      - type: image
+        entity: weather.home
+        title: "Outside Weather (Night)"
+        image: /local/pokemon_floorplan/weather_partlycloudy_night.png
+        state_image:
+          "sunny": /local/pokemon_floorplan/weather_clear_night.png
+          "clear-night": /local/pokemon_floorplan/weather_clear_night.png
+          "partlycloudy": /local/pokemon_floorplan/weather_partlycloudy_night.png
+          "cloudy": /local/pokemon_floorplan/weather_cloudy.png
+          "rainy": /local/pokemon_floorplan/weather_rainy.png
+          "pouring": /local/pokemon_floorplan/weather_lightning.png
+          "lightning": /local/pokemon_floorplan/weather_lightning.png
+          "lightning-rainy": /local/pokemon_floorplan/weather_lightning.png
+          "fog": /local/pokemon_floorplan/weather_fog.png
+          "windy": /local/pokemon_floorplan/weather_windy.png
+          "windy-variant": /local/pokemon_floorplan/weather_windy.png
+          "exceptional": /local/pokemon_floorplan/weather_windy.png
+          "unavailable": /local/pokemon_floorplan/transparent.png
+        tap_action:
+          action: more-info
+        style:
+          top: 8%
+          left: 83%
+          width: 18.2%
+          image-rendering: pixelated
 
   - type: state-label
     entity: weather.home
