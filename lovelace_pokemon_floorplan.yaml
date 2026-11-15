@@ -1,0 +1,559 @@
+type: picture-elements
+image: /local/pokemon_floorplan/floorplan_day.png
+elements:
+  # ===========================================================================
+  # 0. AUTOMATIC DAY / NIGHT BASE LAYER (Driven by sun.sun)
+  # ===========================================================================
+  - type: image
+    entity: sun.sun
+    image: /local/pokemon_floorplan/transparent.png
+    state_image:
+      "above_horizon": /local/pokemon_floorplan/transparent.png
+      "below_horizon": /local/pokemon_floorplan/floorplan_night.png
+    style:
+      top: 50%
+      left: 50%
+      width: 100%
+      pointer-events: none
+
+  # ===========================================================================
+  # 1. ROOM LIGHTING OVERLAYS (Transparent PNGs that illuminate each room)
+  # ===========================================================================
+  - type: image
+    entity: light.tz3000_18ejxno0_ts0012_light
+    image: /local/pokemon_floorplan/transparent.png
+    state_image:
+      "on": /local/pokemon_floorplan/light_kitchen_1.png
+      "off": /local/pokemon_floorplan/transparent.png
+      "unavailable": /local/pokemon_floorplan/transparent.png
+    style:
+      top: 50%
+      left: 50%
+      width: 100%
+      pointer-events: none
+
+  - type: image
+    entity: light.tz3000_18ejxno0_ts0012_light_2
+    image: /local/pokemon_floorplan/transparent.png
+    state_image:
+      "on": /local/pokemon_floorplan/light_kitchen_2.png
+      "off": /local/pokemon_floorplan/transparent.png
+      "unavailable": /local/pokemon_floorplan/transparent.png
+    style:
+      top: 50%
+      left: 50%
+      width: 100%
+      pointer-events: none
+
+  - type: image
+    entity: light.living_zg_light
+    image: /local/pokemon_floorplan/transparent.png
+    state_image:
+      "on": /local/pokemon_floorplan/light_living_1.png
+      "off": /local/pokemon_floorplan/transparent.png
+      "unavailable": /local/pokemon_floorplan/transparent.png
+    style:
+      top: 50%
+      left: 50%
+      width: 100%
+      pointer-events: none
+
+  - type: image
+    entity: light.living_zg_light_2
+    image: /local/pokemon_floorplan/transparent.png
+    state_image:
+      "on": /local/pokemon_floorplan/light_living_2.png
+      "off": /local/pokemon_floorplan/transparent.png
+      "unavailable": /local/pokemon_floorplan/transparent.png
+    style:
+      top: 50%
+      left: 50%
+      width: 100%
+      pointer-events: none
+
+  - type: image
+    entity: light.study_light
+    image: /local/pokemon_floorplan/transparent.png
+    state_image:
+      "on": /local/pokemon_floorplan/light_study.png
+      "off": /local/pokemon_floorplan/transparent.png
+      "unavailable": /local/pokemon_floorplan/transparent.png
+    style:
+      top: 50%
+      left: 50%
+      width: 100%
+      pointer-events: none
+
+  - type: image
+    entity: light.bedroom
+    image: /local/pokemon_floorplan/transparent.png
+    state_image:
+      "on": /local/pokemon_floorplan/light_bedroom.png
+      "off": /local/pokemon_floorplan/transparent.png
+      "unavailable": /local/pokemon_floorplan/transparent.png
+    style:
+      top: 50%
+      left: 50%
+      width: 100%
+      pointer-events: none
+
+  - type: image
+    entity: light.wardrobe_zg
+    image: /local/pokemon_floorplan/transparent.png
+    state_image:
+      "on": /local/pokemon_floorplan/light_wardrobe.png
+      "off": /local/pokemon_floorplan/transparent.png
+      "unavailable": /local/pokemon_floorplan/transparent.png
+    style:
+      top: 50%
+      left: 50%
+      width: 100%
+      pointer-events: none
+
+  # ===========================================================================
+  # 2. INTERACTIVE LIGHT TOGGLES (Tap to toggle room lights)
+  # ===========================================================================
+  - type: state-icon
+    entity: light.tz3000_18ejxno0_ts0012_light
+    title: Laundry / Upper Kitchen Light (kitchen 1)
+    tap_action:
+      action: toggle
+    style:
+      top: 18%
+      left: 54%
+      "--mdc-icon-size": 22px
+
+  - type: state-icon
+    entity: light.tz3000_18ejxno0_ts0012_light_2
+    title: Kitchen Light (kitchen 2)
+    tap_action:
+      action: toggle
+    style:
+      top: 36%
+      left: 59%
+      "--mdc-icon-size": 22px
+
+  - type: state-icon
+    entity: light.living_zg_light
+    title: Living Room Light 1
+    tap_action:
+      action: toggle
+    style:
+      top: 31%
+      left: 78%
+      "--mdc-icon-size": 24px
+
+  - type: state-icon
+    entity: light.living_zg_light_2
+    title: Living Room / Hall Light 2
+    tap_action:
+      action: toggle
+    style:
+      top: 44%
+      left: 71%
+      "--mdc-icon-size": 22px
+
+  - type: state-icon
+    entity: light.study_light
+    title: Study Light
+    tap_action:
+      action: toggle
+    style:
+      top: 66%
+      left: 80%
+      "--mdc-icon-size": 24px
+
+  - type: state-icon
+    entity: light.bedroom
+    title: Master Bedroom Light
+    tap_action:
+      action: toggle
+    style:
+      top: 78%
+      left: 52%
+      "--mdc-icon-size": 24px
+
+  - type: state-icon
+    entity: light.wardrobe_zg
+    title: Walk-in Wardrobe Light
+    tap_action:
+      action: toggle
+    style:
+      top: 81%
+      left: 31%
+      "--mdc-icon-size": 22px
+
+  # ===========================================================================
+  # 3. SENSORS, APPLIANCES, BLINDS & MEDIA PLAYERS
+  # ===========================================================================
+  # Apartment power energy (under Pikachu Crystal Cage)
+  - type: state-label
+    entity: sensor.total_apartment_power
+    title: Apartment Power Energy
+    style:
+      top: 85%
+      left: 9.1%
+      color: "#ffffff"
+      background-color: "rgba(0, 0, 0, 0.35)"
+      border-radius: 6px
+      padding: 1px 5px
+      font-size: 11px
+      font-weight: bold
+
+  # Front Door Contact Sensor (by welcome mat)
+  - type: state-icon
+    entity: binary_sensor.hobeian_zg_102z
+    title: Front Door
+    style:
+      top: 48%
+      left: 43%
+      "--mdc-icon-size": 20px
+
+  # Kitchen camera (type: icon prevents state-icon from rendering a camera stream thumbnail)
+  - type: icon
+    icon: mdi:cctv
+    entity: camera.192_168_0_117_2
+    title: Kitchen/Entrance camera
+    tap_action:
+      action: more-info
+    style:
+      top: 38%
+      left: 53%
+      color: "#ffffff"
+      "--mdc-icon-size": 20px
+
+  # Living Room Presence Sensor
+  - type: state-icon
+    entity: binary_sensor.sonoff_snzb_06p_livingroom_occupancy_2
+    title: Living Room Presence
+    style:
+      top: 23%
+      left: 74%
+      "--mdc-icon-size": 18px
+
+  - type: state-label
+    entity: sensor.smartbox_temp
+    title: Livingroom Temperature
+    style:
+      top: 43%
+      left: 82%
+      color: "#ffffff"
+      background-color: "rgba(0, 0, 0, 0.35)"
+      border-radius: 6px
+      padding: 1px 5px
+      font-size: 11px
+      font-weight: bold
+
+  # Study Presence Sensor & Temperature
+  - type: state-icon
+    entity: binary_sensor.sonoff_snzb_06p_study_occupancy_2
+    title: Study Presence
+    style:
+      top: 53%
+      left: 82%
+      "--mdc-icon-size": 18px
+
+  - type: state-label
+    entity: sensor.ble_temperature_a4c1386371ef
+    title: Study Temperature
+    style:
+      top: 78%
+      left: 82%
+      color: "#ffffff"
+      background-color: "rgba(0, 0, 0, 0.35)"
+      border-radius: 6px
+      padding: 1px 5px
+      font-size: 11px
+      font-weight: bold
+
+  # Robotina Vacuum Cleaner
+  - type: state-icon
+    entity: vacuum.dreame_mc1808_6538_robot_cleaner
+    title: Robotina Vacuum
+    tap_action:
+      action: more-info
+    style:
+      top: 57%
+      left: 84%
+      "--mdc-icon-size": 20px
+
+  # Master Bedroom TV (on semi-transparent north wall of bedroom)
+  - type: state-icon
+    entity: media_player.s90d
+    title: Bedroom TV (S90D)
+    tap_action:
+      action: more-info
+    style:
+      top: 67%
+      left: 52%
+      "--mdc-icon-size": 22px
+
+  # Master Bedroom Air Circulator Fan & Temperature
+  - type: state-icon
+    entity: fan.air_circulator
+    title: Bedroom Fan
+    tap_action:
+      action: toggle
+    style:
+      top: 83%
+      left: 61%
+      "--mdc-icon-size": 20px
+
+  - type: state-label
+    entity: sensor.ble_temperature_a4c138e7668b
+    title: Bedroom Temperature
+    style:
+      top: 88%
+      left: 52%
+      color: "#ffffff"
+      background-color: "rgba(0, 0, 0, 0.35)"
+      border-radius: 6px
+      padding: 1px 5px
+      font-size: 11px
+      font-weight: bold
+
+  # Master Bedroom Window sensor
+  - type: state-icon
+    entity: binary_sensor.snzb_04_window_bedroom_opening
+    title: Bedroom Window
+    style:
+      top: 80%
+      left: 70%
+      "--mdc-icon-size": 20px
+
+
+  # Master Bedroom Window Sensor & Curtain
+  - type: state-icon
+    entity: cover.blinds
+    title: Bedroom Curtain
+    tap_action:
+      action: more-info
+    style:
+      top: 83%
+      left: 70%
+      "--mdc-icon-size": 20px
+
+  # ===========================================================================
+  # 4. DYNAMIC CHARACTERS: ASH/RED (person.luis) & MISTY (person.mafecita)
+  #    Method B + Choice B (Moves between Workstation, Bedroom, and Living Room)
+  #    Uses Threshold Binary Sensor Helpers created in Home Assistant:
+  #    - binary_sensor.studio_tp_link_power_strip_d560_stu5_luis_study_desk_active (> 5W)
+  #    - binary_sensor.living_room_tp_link_power_strip_c8bb_liv4_mafe_living_desk_active (> 5W)
+  #    - binary_sensor.bedroom_sonoff_tv_bedroom_tv_power_active (> 15W)
+  # ===========================================================================
+  # --- ASH / RED (person.luis) ---
+  # 1) In Study (at PC Desk) when stu5 > 5W
+  - type: conditional
+    conditions:
+      - entity: person.luis
+        state: "home"
+      - entity: binary_sensor.studio_tp_link_power_strip_d560_stu5_luis_study_desk_active
+        state: "on"
+    elements:
+      - type: image
+        entity: person.luis
+        title: "Luis (Working in Study)"
+        image: /local/pokemon_floorplan/red_w.png
+        tap_action:
+          action: more-info
+        style:
+          top: 61%
+          left: 83%
+          width: 4.6%
+          image-rendering: pixelated
+
+  # 2) In Master Bedroom when stu5 <= 5W AND Bedroom TV Power > 15W (watching TV)
+  - type: conditional
+    conditions:
+      - entity: person.luis
+        state: "home"
+      - entity: binary_sensor.studio_tp_link_power_strip_d560_stu5_luis_study_desk_active
+        state: "off"
+      - entity: binary_sensor.bedroom_sonoff_tv_bedroom_tv_power_active
+        state: "on"
+    elements:
+      - type: image
+        entity: person.luis
+        title: "Luis (In Bedroom)"
+        image: /local/pokemon_floorplan/red_n.png
+        tap_action:
+          action: more-info
+        style:
+          top: 82%
+          left: 66%
+          width: 4.6%
+          image-rendering: pixelated
+
+  # 3) Default Hangout in Living Room when stu5 <= 5W AND Bedroom TV Power <= 15W
+  - type: conditional
+    conditions:
+      - entity: person.luis
+        state: "home"
+      - entity: binary_sensor.studio_tp_link_power_strip_d560_stu5_luis_study_desk_active
+        state: "off"
+      - entity: binary_sensor.bedroom_sonoff_tv_bedroom_tv_power_active
+        state: "off"
+    elements:
+      - type: image
+        entity: person.luis
+        title: "Luis (In Living Room)"
+        image: /local/pokemon_floorplan/red_s.png
+        tap_action:
+          action: more-info
+        style:
+          top: 34%
+          left: 71%
+          width: 4.6%
+          image-rendering: pixelated
+
+  # --- MISTY (person.mafecita) ---
+  # 1) At Living Room Desk when liv4 (living_mafe_pc) > 5W
+  - type: conditional
+    conditions:
+      - entity: person.mafecita
+        state: "home"
+      - entity: binary_sensor.living_room_tp_link_power_strip_c8bb_liv4_mafe_living_desk_active
+        state: "on"
+    elements:
+      - type: image
+        entity: person.mafecita
+        title: "Mafe (At Living Room Desk)"
+        image: /local/pokemon_floorplan/misty_s.png
+        tap_action:
+          action: more-info
+        style:
+          top: 46%
+          left: 71%
+          width: 4.6%
+          image-rendering: pixelated
+
+  # 2) In Master Bedroom when liv4 <= 5W AND Bedroom TV Power > 15W
+  - type: conditional
+    conditions:
+      - entity: person.mafecita
+        state: "home"
+      - entity: binary_sensor.living_room_tp_link_power_strip_c8bb_liv4_mafe_living_desk_active
+        state: "off"
+      - entity: binary_sensor.bedroom_sonoff_tv_bedroom_tv_power_active
+        state: "on"
+    elements:
+      - type: image
+        entity: person.mafecita
+        title: "Mafe (In Bedroom)"
+        image: /local/pokemon_floorplan/misty_n.png
+        tap_action:
+          action: more-info
+        style:
+          top: 82%
+          left: 41%
+          width: 4.6%
+          image-rendering: pixelated
+
+  # 3) Default Hangout by Kitchen Bar / Living Room when liv4 <= 5W AND Bedroom TV Power <= 15W
+  - type: conditional
+    conditions:
+      - entity: person.mafecita
+        state: "home"
+      - entity: binary_sensor.living_room_tp_link_power_strip_c8bb_liv4_mafe_living_desk_active
+        state: "off"
+      - entity: binary_sensor.bedroom_sonoff_tv_bedroom_tv_power_active
+        state: "off"
+    elements:
+      - type: image
+        entity: person.mafecita
+        title: "Mafe (In Kitchen / Living Room)"
+        image: /local/pokemon_floorplan/misty_e.png
+        tap_action:
+          action: more-info
+        style:
+          top: 34%
+          left: 63%
+          width: 4.6%
+          image-rendering: pixelated
+
+  # ===========================================================================
+  # 5. PIKACHU POWER GENERATOR (External Hall Crystal Cage - Cols 1..2, Rows 16..17)
+  # ===========================================================================
+  - type: image
+    entity: sensor.total_apartment_power
+    title: "Pikachu Power Generator"
+    image: /local/pokemon_floorplan/pikachu_thunder.gif
+    tap_action:
+      action: more-info
+    style:
+      top: 77.3%
+      left: 9.1%
+      width: 9.1%
+      image-rendering: pixelated
+
+  # ===========================================================================
+  # 6. PS5 NOW PLAYING MINIATURE ON STUDY CRT TV (Col 16, Row 14)
+  #    Shows image.lordvault_now_playing only when a game is active
+  # ===========================================================================
+  - type: conditional
+    conditions:
+      - entity: sensor.lordvault_now_playing
+        state_not: "unknown"
+      - entity: sensor.lordvault_now_playing
+        state_not: "unavailable"
+    elements:
+      - type: image
+        entity: image.lordvault_now_playing
+        image_entity: image.lordvault_now_playing
+        title: "PS5 Now Playing"
+        tap_action:
+          action: more-info
+        style:
+          top: 66%
+          left: 75%
+          width: 6%
+          border-radius: 3px
+          box-shadow: "0 0 4px rgba(88, 208, 255, 0.8)"
+
+  # ===========================================================================
+  # 7. OUTSIDE WEATHER IN TOP-RIGHT SKY CORNER (weather.home - 4x3 Tiles)
+  # ===========================================================================
+  - type: image
+    entity: weather.home
+    title: "Outside Weather"
+    image: /local/pokemon_floorplan/weather_partlycloudy.png
+    state_image:
+      "sunny": /local/pokemon_floorplan/weather_sunny.png
+      "clear-night": /local/pokemon_floorplan/weather_clear_night.png
+      "partlycloudy": /local/pokemon_floorplan/weather_partlycloudy.png
+      "cloudy": /local/pokemon_floorplan/weather_cloudy.png
+      "rainy": /local/pokemon_floorplan/weather_rainy.png
+      "pouring": /local/pokemon_floorplan/weather_lightning.png
+      "lightning": /local/pokemon_floorplan/weather_lightning.png
+      "lightning-rainy": /local/pokemon_floorplan/weather_lightning.png
+      "fog": /local/pokemon_floorplan/weather_fog.png
+      "windy": /local/pokemon_floorplan/weather_windy.png
+      "windy-variant": /local/pokemon_floorplan/weather_windy.png
+      "exceptional": /local/pokemon_floorplan/weather_windy.png
+      "unavailable": /local/pokemon_floorplan/transparent.png
+    tap_action:
+      action: more-info
+    style:
+      top: 8%
+      left: 83%
+      width: 18.2%
+      image-rendering: pixelated
+
+  - type: state-label
+    entity: weather.home
+    attribute: temperature
+    suffix: " °C"
+    title: "Outside Temperature"
+    tap_action:
+      action: more-info
+    style:
+      top: 15%
+      left: 83%
+      color: "#ffffff"
+      background-color: "rgba(0, 0, 0, 0.35)"
+      border-radius: 6px
+      padding: 1px 6px
+      font-size: 11px
+      font-weight: bold
+
+

@@ -1,0 +1,11 @@
+# Editor swap & backup files
+.*.kate-swp
+*.swp
+*~
+.DS_Store
+
+# Python virtual environments & cache
+.venv/
+venv/
+__pycache__/
+*.pyc
