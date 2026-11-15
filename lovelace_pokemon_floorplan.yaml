@@ -232,7 +232,7 @@ elements:
       "--mdc-icon-size": 18px
 
   - type: state-label
-    entity: sensor.smartbox_temp
+    entity: sensor.living_room_smart_air_box_smartbox_temp_stable
     title: Livingroom Temperature
     style:
       top: 43%
